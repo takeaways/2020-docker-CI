@@ -10,7 +10,7 @@ before_install:
   - docker build -t geonil/docker-react-app -f Dockerfile.dev ./
 # 테스트 진행
 script:
-  - docker run -e CI=true geonil/docker-react-app npm run test -- --coverage
+  - docker run -e CI=true geonil/docker-react-app npm run test
 
 after_success:
   - echo "Test Success"
