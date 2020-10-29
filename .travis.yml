@@ -7,9 +7,10 @@ services:
 
 before_install:
   - echo "start creating an image with dockerfile"
-  - docker build -t geonil/docker-react-app -f Dockerfile.dev .
+  - docker build -t geonil/docker-react-app -f Dockerfile.dev ./
 # 테스트 진행
-
+script:
+  - docker run -e CI=true geonil/docker-react-app npm run test -- --coverage
 
 after_success:
   - echo "Test Success"
