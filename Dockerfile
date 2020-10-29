@@ -1,4 +1,4 @@
-FROM node:14 as builder
+FROM node as builder
 # 다음 From 까지는 builder 스테이지 라는 것을 명시
 WORKDIR /usr/src/app
 COPY package.json ./
