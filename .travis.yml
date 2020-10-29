@@ -22,4 +22,4 @@ deploy:
   on: 
     branch: react-app
 access_key_id: $AWS_ACCESS_KEY
-secrete_access_ky: $AWS_SECRET_ACCESS_KEY
+secret_access_ky: $AWS_SECRET_ACCESS_KEY
