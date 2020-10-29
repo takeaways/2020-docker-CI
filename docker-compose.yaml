@@ -1,0 +1,20 @@
+version: "3"
+services:
+    docker-react-app:
+      build:
+        context: . #도커 이미지를 구성하이 위한 파일과 포더들이 있는 위치
+        dockerfile: Dockerfile.dev
+      ports:
+          - "3500:3000"
+      volumes:
+          - /usr/src/app/node_modules
+          - ./:/usr/src/app
+      stdin_open: true
+    tests:
+      build:
+        context: .
+        dockerfile: Dockerfile.dev
+      volumes:
+          - /usr/src/app/node_modules
+          - ./:/usr/src/app
+      command: ["npm", "run","test"]
