@@ -1,0 +1,28 @@
+{
+  "name": "docker-node-app",
+  "version": "0.0.1",
+  "description": "node app on docker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node server.js",
+    "predoc":"docker build -t geonil/node-app ./",
+    "doc":"docker run -d -p 8080:8080 geonil/node-app"
+  },
+  "keywords": [
+    "hello",
+    "docker"
+  ],
+  "author": "DevJang",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.1",
+    "@babel/preset-env": "^7.12.1"
+  }
+}
