@@ -7,6 +7,7 @@ COPY ./ ./
 RUN npm run build
 
 FROM nginx
+EXPOSE 80
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 # nginx가 요청에 맞게 제공해줄 수 있는 파일 위치를 설정하고 목사해준다.
 

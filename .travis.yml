@@ -1,16 +1,26 @@
 sudo: required
 
 language: generic
-
+os: linux
 services:
   - docker
 
 before_install:
   - echo "start creating an image with dockerfile"
-  - docker build -t geonil/docker-react-app -f Dockerfile.dev ./
+  - docker build -t geonil/docker-react-app -f Dockerfile.dev .
 # 테스트 진행
 script:
   - docker run -e CI=true geonil/docker-react-app npm run test -- --coverage
 
-after_success:
-  - echo "Test Success"
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "docker-react-app"
+  env: "DockerReactApp-env"
+  bucket: "elasticbeanstalk-ap-northeast-2-910991389248"
+  bucket_path: "docker-react-app"
+  on: 
+    branch: react-app
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+
